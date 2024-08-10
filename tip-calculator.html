@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <h3>TIP CALCULATOR</h3>
+
+      <div class="wrapper"><p>How much was your bill?</p>
+      <label for="bill-amount">$</label>
+      <input id="bill-amount" type="number" placeholder="Bill Amount" />
+      <p>How was your service?</p>
+
+      <select name="service rating" id="tip-percent">
+        <option value="choices">--Choose an Option--</option>
+        <option value="30">30% - Outstanding</option>
+        <option value="20">20% - Good</option>
+        <option value="15">15% - It was OK</option>
+        <option value="10">10% - Bad</option>
+        <option value="5">5% - Terrible</option>
+      </select>
+      <p>How many people are sharing the bill?</p>
+      <input id="people-amount" type="number" placeholder="Number of People" />
+      <label for="people-amount">people</label> </div> <br>
+       
+<div class="button-container"><button id="red-btn">CALCULATE!</button>
+     </div> <div id="output"></div>
+      
+      
+    
+ 
+ 
+  
+
+    <script>
+      //accessing the DOM elements
+
+      const billAmount = document.getElementById("bill-amount");
+      const tipPercent = document.getElementById("tip-percent");
+      const peopleAmount = document.getElementById("people-amount");
+      const output = document.getElementById("output");
+      const buttonCont = document.querySelector('.button-container')
+      const wrapper = document.querySelector('.wrapper');
+
+      // styling the calculator
+      const body = document.querySelector("body");
+      body.style.cssText =
+        "background: linear-gradient(to right, black, maroon) ; display:flex; justify-content:center; ";
+      const container = document.querySelector(".container");
+      container.style.cssText =
+        "background-color: lightgray; width:50%; align-content:center;justify-content:center; border-radius: 8px ";
+wrapper.style.cssText="padding:0 20px"
+      const header = document.querySelector("h3");
+      header.style.cssText =
+        "text-align:center; background-color:black; color:white; margin-top:0; padding:10px; border-radius: 8px 8px 0 0 ";
+
+      const button = document.querySelector("#red-btn");
+      button.style.cssText =
+        "background-color:maroon; color: white; padding:10px 20px; border-radius:8px; text-align:center";
+      buttonCont.style.cssText="display:flex; justify-content:center; text-align:center; padding:10px"
+      output.style.cssText="padding:20px; font-size:20px; color: green; text-align:center; font-weight:bold"
+        // styling ends here
+
+      // adding functionality
+
+      button.addEventListener("click", function () {
+        // Convert input values to numbers
+        const bill = parseFloat(billAmount.value);
+        const tip = parseFloat(tipPercent.value);
+        const people = parseInt(peopleAmount.value, 10);
+
+        //handling errors
+
+        if (isNaN(bill) || isNaN(tip) || people <= 0) {
+          output.textContent = "Enter valid numbers in all fields!!!";
+          return;
+        }
+
+        //clculations
+        const tipAmount = bill * (tip / 100);
+        const sum = (bill + tipAmount) / people;
+        output.textContent = `Each person should pay: $${sum.toFixed(2)}`;
+        billAmount.value = "";
+        peopleAmount.value = "";
+      });
+
+      document.body.style.backgroundColor = "#95b8d1";
+      const myCont = document.querySelector("#container");
+      myCont.style.backgroundColor = "lightgray";
+      myCont.style.textAlign = "center";
+      myCont.style.margin = "40px";
+      myCont.style.padding = "40px";
+      myCont.style.fontFamily = "Muli, Roboto, Helvetica, sand-serif";
+      myCont.style.fontSize = "20px";
+      myCont.style.color = "#121212";
+
+      const inputBox = document.querySelector("#inputBox");
+      inputBox.style.width = "100%";
+      inputBox.style.height = "2rem";
+
+      const myButton = document.querySelector("#myButton");
+      myButton.addEventListener("click", function () {
+        const output = document.querySelector("#output");
+        output.textContent = inputBox.value;
+        output.style.color = "#95b8d1";
+        output.style.textTransform = "uppercase";
+      });
+
+      myButton.style.backgroundColor = "#95b8d1";
+      myButton.style.color = "white";
+      myButton.style.padding = "10px 15px";
+      myButton.style.fontSize = "16px";
+      myButton.style.borderRadius = "4px";
+      myButton.style.border = "none";
+      myButton.style.marginTop = "20px";
+
+      output.innerHTML();
+    </script>
+  </body>
+</html>

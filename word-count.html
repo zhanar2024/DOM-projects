@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Count</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Type a word in the box</h1>
+      <input type="text" id="input" placeholder="type a word" /> <br />
+      <button id="my-button">Click to calculate word length</button>
+      <div id="output"></div>
+    </div>
+
+    <script>
+      const container = document.getElementById("container");
+      const input = document.getElementById("input");
+      const button = document.getElementById("my-button");
+      const output = document.getElementById("output");
+
+      //word character counter
+      button.addEventListener("click", function () {
+        output.textContent = input.value.length;
+        input.value = "";
+      });
+
+      //styling the counter
+
+      container.style.backgroundColor = "salmon";
+      container.style.border = "1px solid green";
+      container.style.textAlign = "center";
+      container.style.padding = "50px 30px";
+      container.style.margin = "50px";
+
+      button.style.borderRadius = "4px";
+      button.style.padding = "10px";
+      button.style.marginBottom = "40px";
+
+      input.style.padding = "10px";
+      input.style.textAlign = "center";
+      input.style.marginBottom = "20px";
+
+      output.style.padding = "10px";
+      output.style.textAlign = "center";
+      output.style.fontSize = "40px";
+    </script>
+  </body>
+</html>
